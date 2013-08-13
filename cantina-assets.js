@@ -8,6 +8,6 @@ app.assets = module.exports = {
 
 if (app.conf.get('assets:optimize') === 'enabled') {
   app.hook('start').add(-500, app.assets.css.optimize);
-  app.hook('start').add(-500, require('./lib/js.js'));
+  app.hook('start').add(-500, app.assets.js.optimize);
   app.hook('start').add(-500, require('./lib/templates.js'));
 }
