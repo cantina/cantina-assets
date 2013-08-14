@@ -10,7 +10,6 @@
     "uglify-js": "~2.3.6",
     "dish": "~0.1.2",
     "sqwish": "~0.2.1",
-    "underscore": "~1.4.1",
     "glob": "~3.1.21",
     "handlebars": "1.0.10"
   },

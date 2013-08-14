@@ -1,10 +1,9 @@
 var app = require('cantina');
 
-app.assets = module.exports = {
-  css: require('./lib/css.js'),
-  js: require('./lib/js.js'),
-  templates: require('./lib/templates.js')
-};
+app.assets = module.exports = {};
+require('./lib/css.js');
+require('./lib/js.js');
+require('./lib/templates.js');
 
 if (app.conf.get('assets:optimize') === 'enabled') {
   app.hook('start').add(-503, app.assets.css.optimize);
