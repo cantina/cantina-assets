@@ -1,7 +1,7 @@
 Cantina: Assets
 ============
 
-Asset compiler, aggregator, and minifier for Cantina applications.
+Asset aggregator and minifier for Cantina applications.
 
 *Cantina Version:* **3.x**
 
@@ -13,50 +13,41 @@ Provides
 Configuration
 -------------
 
-Though you can manually schedule jobs via the api, the more common way to setup
-your's app's jobs is through your configuration.
+Specify your app's CSS and JS files via `styles` and `scripts` keys,
+respectively, in your conf. Then setup how `cantina-assets` should handle them:
 
 ```js
 {
   "assets": {
-    "optimize": "enabled"
+    "optimize": "enabled" // Will run all optimizers on `app.start()`
     "css": {
-      "foo": {
-        "aggregate": true,
-        "minify": true,
-        "serve": true
-        "match": [
-          "^/foo"
-        ]
-      }
-      },
-      "bar": {
+      "foo": { // Custom namespaces allow for multiple aggregates.
         "aggregate": true,
         "prefix": true,
         "minify": true,
-        "serve": true,
-        "match": [
-          "^/bar",
-          "baz$"
+        "serve": true
+        "match": [ // Define an array of RegEx patterns to match files against.
+          "^/foo"
         ],
-        "exclude": [
-          "thing"
+        "exclude": [ // Define an array of RegEx patterns to exclude files.
+          "^do",
+          "not",
+          "want$"
         ]
       }
-    }
     },
     "js": {
-      "foo": {
+      "bar": {
         "aggregate": true,
         "minify": true,
         "serve": true
         "match": [
-          "^/foo"
+          "^/bar"
         ]
       }
     },
     "templates": {
-      "all": {
+      "baz": {
         "aggregate": true,
         "minify": false
       }
@@ -68,7 +59,7 @@ your's app's jobs is through your configuration.
 Usage
 -----
 
-If `app.conf.get('assets:optimize') === 'enabled'` then you assets will be run
+If `app.conf.get('assets:optimize') === 'enabled'` then your assets will be run
 through the optimization steps as soon as `app.start()` is called, respecting
 all flags per namespace.
 
@@ -77,7 +68,7 @@ API
 
 **app.assets.[css|js|templates].aggregate (namespace, cb)**
 
-Aggregates asset files as per the conf's namespace definition.
+Aggregates asset files into one file, as per the conf's namespace definition.
 
 **app.assets.[css|js|templates].minify (namespace, cb)**
 
