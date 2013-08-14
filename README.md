@@ -5,6 +5,100 @@ Asset compiler, aggregator, and minifier for Cantina applications.
 
 *Cantina Version:* **3.x**
 
+Provides
+--------
+
+- **app.assets** - The Assets API
+
+Configuration
+-------------
+
+Though you can manually schedule jobs via the api, the more common way to setup
+your's app's jobs is through your configuration.
+
+```js
+{
+  "assets": {
+    "optimize": "enabled"
+    "css": {
+      "foo": {
+        "aggregate": true,
+        "minify": true,
+        "serve": true
+        "match": [
+          "^/foo"
+        ]
+      }
+      },
+      "bar": {
+        "aggregate": true,
+        "prefix": true,
+        "minify": true,
+        "serve": true,
+        "match": [
+          "^/bar",
+          "baz$"
+        ],
+        "exclude": [
+          "thing"
+        ]
+      }
+    }
+    },
+    "js": {
+      "foo": {
+        "aggregate": true,
+        "minify": true,
+        "serve": true
+        "match": [
+          "^/foo"
+        ]
+      }
+    },
+    "templates": {
+      "all": {
+        "aggregate": true,
+        "minify": false
+      }
+    }
+  }
+}
+```
+
+Usage
+-----
+
+If `app.conf.get('assets:optimize') === 'enabled'` then you assets will be run
+through the optimization steps as soon as `app.start()` is called, respecting
+all flags per namespace.
+
+API
+---
+
+**app.assets.[css|js|templates].aggregate (namespace, cb)**
+
+Aggregates asset files as per the conf's namespace definition.
+
+**app.assets.[css|js|templates].minify (namespace, cb)**
+
+Minifies asset files (only applies if they are aggregated as well).
+
+**app.assets.css.prefix (namespace, cb)**
+
+Adds certain vendor-prefixes to CSS attributes (only applies if they are aggregated as well).
+
+**app.assets.[css|js|templates].serve (namespace, cb)**
+
+Serves the optimized assets via [dish](https://www.github.com/carlos8f/node-dish) (only applies if they are aggregated as well).
+
+**app.assets.[css|js|templates].[aggregate|minify|prefix|serve]All (cb)**
+
+Runs modifier on all namespaces.
+
+**app.assets.[css|js|templates].optimize (cb)**
+
+Runs all modifiers on all namespaces.
+
 - - -
 
 ### Developed by [Terra Eclipse](http://www.terraeclipse.com)
