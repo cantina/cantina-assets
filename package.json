@@ -1,6 +1,6 @@
 {
   "name": "cantina-assets",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Asset aggregator and minifier for Cantina applications.",
   "main": "cantina-assets.js",
   "dependencies": {
