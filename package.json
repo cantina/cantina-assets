@@ -11,7 +11,7 @@
     "dish": "~0.1.2",
     "sqwish": "~0.2.1",
     "glob": "~3.1.21",
-    "handlebars": "1.0.10"
+    "handlebars": "1.0.x"
   },
   "devDependencies": {
     "mocha": "*",
