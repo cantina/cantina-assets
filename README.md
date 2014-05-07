@@ -22,7 +22,11 @@ respectively, in your conf. Then setup how `cantina-assets` should handle them:
     "optimize": "enabled" // Will run all optimizers on `app.start()`
     "css": {
       "foo": { // Custom namespaces allow for multiple aggregates.
-        "root": "/path/to/dir"
+        "root": "/path/to/dir",
+        "dirs": [ // Additional directories from which to fetch "/public" files.
+          "/path/to/assets",
+          "/another/path"
+        ],
         "aggregate": true,
         "prefix": true,
         "minify": true,
