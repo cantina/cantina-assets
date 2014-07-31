@@ -3,7 +3,7 @@ module.exports = function (app) {
 
   var css = app.require('./lib/css.js')
     , js = app.require('./lib/js.js')
-    , tempaltes = app.require('./lib/templates.js');
+    , templates = app.require('./lib/templates.js');
 
   if (app.conf.get('assets:optimize') === 'enabled') {
     app.hook('start').add(-503, css.optimize);
