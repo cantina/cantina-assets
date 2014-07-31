@@ -1,7 +1,7 @@
 {
   "name": "cantina-assets",
   "description": "Asset aggregator and minifier for Cantina applications.",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "publishConfig": {
     "registry": "https://npm-registry.terraeclipse.com"
   },
