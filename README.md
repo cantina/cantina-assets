@@ -3,6 +3,8 @@ Cantina: Assets
 
 Asset aggregator and minifier for Cantina applications.
 
+**Note:** Currently very specific to a particular use-case (RequireJS/Marionette/Plain CSS).
+
 Provides
 --------
 
