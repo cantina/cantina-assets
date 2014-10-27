@@ -1,14 +1,10 @@
 module.exports = function (app) {
   app.assets = {};
 
-  var css = app.require('./lib/css.js')
-    , js = app.require('./lib/js.js')
-    , templates = app.require('./lib/templates.js');
-
   if (app.conf.get('assets:optimize') === 'enabled') {
-    app.hook('start').add(-503, css.optimize);
-    app.hook('start').add(-502, js.optimize);
-    app.hook('start').add(-501, templates.optimize);
+    app.hook('start').add(-503, app.require('./lib/css.js').optimize);
+    app.hook('start').add(-502, app.require('./lib/js.js').optimize);
+    app.hook('start').add(-501, app.require('./lib/templates.js').optimize);
   }
 
   return app.assets;
