@@ -5,13 +5,14 @@
   "main": "cantina-assets.js",
   "dependencies": {
     "async": "~0.1.22",
+    "dish": "~0.1.2",
+    "glob": "~3.1.21",
+    "handlebars": "1.0.x",
     "mkdirp": "~0.3.5",
     "rimraf": "~2.0.3",
-    "uglify-js": "~2.3.6",
-    "dish": "~0.1.2",
     "sqwish": "~0.2.1",
-    "glob": "~3.1.21",
-    "handlebars": "1.0.x"
+    "uglyfly-js": "^3.2.2",
+    "vinyl": "^0.5.0"
   },
   "devDependencies": {
     "mocha": "*",
